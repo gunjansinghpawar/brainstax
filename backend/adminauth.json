@@ -1,0 +1,507 @@
+{
+  "info": {
+    "name": "User Management API",
+    "description": "Complete API collection for User, Company, and Employee management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"]
+        }
+      }
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/:userId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "USER_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create User (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"Pass123\",\n  \"role\": \"companyadmin\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/:userId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "USER_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/:userId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "USER_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Companies",
+      "item": [
+        {
+          "name": "Get All Companies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/companies",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies"]
+            }
+          }
+        },
+        {
+          "name": "Get Company By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Company (Super Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tech Corp\",\n  \"email\": \"info@techcorp.com\",\n  \"address\": \"123 Main Street, City, Country\",\n  \"phone\": \"+1234567890\",\n  \"adminName\": \"John Doe\",\n  \"adminEmail\": \"john@techcorp.com\",\n  \"adminPassword\": \"Admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/companies",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies"]
+            }
+          }
+        },
+        {
+          "name": "Update Company",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Tech Corp\",\n  \"address\": \"456 New Street, City, Country\",\n  \"phone\": \"+9876543210\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Company",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Employees",
+      "item": [
+        {
+          "name": "Get All Employees of Company",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Employee By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees/:employeeId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees", ":employeeId"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                },
+                {
+                  "key": "employeeId",
+                  "value": "EMPLOYEE_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Employee (Company Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@techcorp.com\",\n  \"password\": \"Employee123\",\n  \"department\": \"IT\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Employee - HR Department",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Johnson\",\n  \"email\": \"alice@techcorp.com\",\n  \"password\": \"Employee123\",\n  \"department\": \"HR\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Employee - Finance Department",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bob Williams\",\n  \"email\": \"bob@techcorp.com\",\n  \"password\": \"Employee123\",\n  \"department\": \"Finance\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Employee - Operations Department",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Charlie Brown\",\n  \"email\": \"charlie@techcorp.com\",\n  \"password\": \"Employee123\",\n  \"department\": \"Operations\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Remove Employee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/companies/:companyId/employees/:employeeId",
+              "host": ["{{base_url}}"],
+              "path": ["api", "companies", ":companyId", "employees", ":employeeId"],
+              "variable": [
+                {
+                  "key": "companyId",
+                  "value": "COMPANY_ID_HERE"
+                },
+                {
+                  "key": "employeeId",
+                  "value": "EMPLOYEE_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test Scenarios",
+      "item": [
+        {
+          "name": "Complete Flow - Create Company + Employees",
+          "item": [
+            {
+              "name": "1. Create Company",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Innovation Labs\",\n  \"email\": \"contact@innovationlabs.com\",\n  \"address\": \"789 Innovation Drive, Tech City, USA\",\n  \"phone\": \"+1555123456\",\n  \"adminName\": \"Sarah Connor\",\n  \"adminEmail\": \"sarah@innovationlabs.com\",\n  \"adminPassword\": \"SecureAdmin123\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/companies",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "companies"]
+                }
+              }
+            },
+            {
+              "name": "2. Add First Employee",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Michael Scott\",\n  \"email\": \"michael@innovationlabs.com\",\n  \"password\": \"Employee123\",\n  \"department\": \"HR\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/companies/:companyId/employees",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "companies", ":companyId", "employees"],
+                  "variable": [
+                    {
+                      "key": "companyId",
+                      "value": "COMPANY_ID_FROM_STEP_1"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "3. Add Second Employee",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Pam Beesly\",\n  \"email\": \"pam@innovationlabs.com\",\n  \"password\": \"Employee123\",\n  \"department\": \"IT\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/companies/:companyId/employees",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "companies", ":companyId", "employees"],
+                  "variable": [
+                    {
+                      "key": "companyId",
+                      "value": "COMPANY_ID_FROM_STEP_1"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "4. Get All Employees",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/companies/:companyId/employees",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "companies", ":companyId", "employees"],
+                  "variable": [
+                    {
+                      "key": "companyId",
+                      "value": "COMPANY_ID_FROM_STEP_1"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}
